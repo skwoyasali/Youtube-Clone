@@ -2,34 +2,37 @@ import { useState } from "react";
 import { Menu, Mic, Search, Video, Bell } from "lucide-react";
 import { useSidebar } from "../context/SidebarContext";
 import { Link } from "react-router-dom";
+
 const Header = ({ onMenuClick }) => {
   const [search, setSearch] = useState("");
   const { toggleSidebar } = useSidebar();
 
   const handleSearch = (e) => {
     e.preventDefault();
-    // Optional: Implement search route or logic
     console.log("Search:", search);
   };
 
   return (
-    <header className="flex items-center justify-between p-2 px-4 bg-white shadow-md sticky top-0 z-50">
-      {/* Left */}
+    <header className="flex items-center justify-between px-4 py-2 bg-white shadow-md sticky top-0 z-50">
+      {/* Left - Logo and Menu */}
       <div className="flex items-center space-x-4">
-        <Menu className="cursor-pointer" onClick={toggleSidebar} />
-        <Link>
+        <Menu
+          className="cursor-pointer w-6 h-6 sm:w-7 sm:h-7"
+          onClick={toggleSidebar}
+        />
+        <Link to="/">
           <img
-            className="h-6"
+            className="h-5 sm:h-6"
             src="https://www.gstatic.com/youtube/img/branding/youtubelogo/svg/youtubelogo.svg"
             alt="YouTube Logo"
           />
         </Link>
       </div>
 
-      {/* Middle - Search */}
+      {/* Middle - Search (hidden on small screens) */}
       <form
         onSubmit={handleSearch}
-        className="flex items-center flex-grow max-w-xl mx-4"
+        className="hidden md:flex items-center flex-grow max-w-xl mx-4"
       >
         <input
           type="text"
@@ -44,13 +47,16 @@ const Header = ({ onMenuClick }) => {
         >
           <Search className="w-5 h-6" />
         </button>
-        <Mic className="ml-3 w-5 h-5 text-gray-600 cursor-pointer" />
+        <Mic className="ml-3 w-5 h-5 text-gray-600 cursor-pointer hidden lg:block" />
       </form>
 
-      {/* Right */}
+      {/* Right - Icons */}
       <div className="flex items-center space-x-4">
-        <Video className="w-6 h-6 cursor-pointer" />
-        <Bell className="w-6 h-6 cursor-pointer" />
+        {/* Search icon shown only on small screens */}
+        <Search className="w-5 h-5 md:hidden cursor-pointer" />
+
+        <Video className="w-5 h-5 sm:w-6 sm:h-6 cursor-pointer" />
+        <Bell className="w-5 h-5 sm:w-6 sm:h-6 cursor-pointer" />
         <Link to="/login">
           <img
             className="w-8 h-8 rounded-full cursor-pointer"

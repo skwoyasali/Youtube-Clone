@@ -1,9 +1,10 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <div className="bg-white p-8 rounded-xl shadow-md w-full max-w-md">
+    <div className="flex items-center justify-center min-h-screen bg-gray-100 px-4">
+      <div className="bg-white p-6 sm:p-8 rounded-xl shadow-md w-full max-w-md">
         <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">
           Sign in to YouTube Clone
         </h2>
@@ -39,9 +40,11 @@ const Login = () => {
 
         <p className="mt-4 text-center text-sm text-gray-500">
           Don’t have an account?{" "}
-          <span className="text-red-500 hover:underline cursor-pointer">
-            Sign Up
-          </span>
+          <Link to="/register">
+            <span className="text-red-500 hover:underline cursor-pointer">
+              Sign Up
+            </span>
+          </Link>
         </p>
       </div>
     </div>
