@@ -1,26 +1,32 @@
 import express from 'express';
 import mongoose from 'mongoose';
-import dotenv from 'dotenv';
 import cors from 'cors';
+import dotenv from 'dotenv';
+
 import userRoutes from './routes/UserRoutes.js';
-import videoRoutes from './routes/videos.js';
-import commentRoutes from './routes/comments.js';
-import channelRoutes from './routes/channels.js';
+import videoRoutes from './routes/videosRoutes.js';
+import commentRoutes from './routes/commentRoutes.js';
+import channelRoutes from './routes/channelRoutes.js';
 
 dotenv.config();
-const app = express();
+const app = new express();
+
+app.listen(process.env.PORT, () => {
+    console.log(`server is running at port: ${process.env.PORT}`);
+});
 
 app.use(cors());
 app.use(express.json());
 
-app.use('/api/user', userRoutes);
-app.use('/api/videos', videoRoutes);
-app.use('/api/comments', commentRoutes);
-app.use('/api/channels', channelRoutes);
+userRoutes(app);
+videoRoutes(app);
+commentRoutes(app);
+channelRoutes(app);
 
-mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => {
-    console.log('MongoDB connected');
-    app.listen(process.env.PORT || 8000, () => console.log('Server running'));
-  })
-  .catch(err => console.error(err));
+app.get('/', (req, res) => {
+  res.send('YouTube Clone API is running...');
+});
+
+const db = mongoose.connect(process.env.MONGO_URI);
+db.then(()=>console.log('database connected successfully!'))
+  .catch(err=>console.log('database could not be connected: ', err));

@@ -8,7 +8,8 @@ import Home from "./Pages/Home.jsx";
 import Login from "./Pages/Login.jsx";
 import VideoPlayer from "./Pages/VideoPlayer.jsx";
 import Register from "./Pages/Register.jsx";
-import Upload  from "./Pages/Upload.jsx"
+import Upload from "./Pages/Upload.jsx";
+import { AuthProvider } from "./context/AuthContext.jsx";
 
 const router = createBrowserRouter([
   {
@@ -28,24 +29,25 @@ const router = createBrowserRouter([
         element: <Login />,
       },
       {
-        path:"/register",
-        element: <Register />
+        path: "/register",
+        element: <Register />,
       },
       {
-        path:"/upload",
-        element:<Upload /> 
+        path: "/upload",
+        element: <Upload />,
       },
       {
-        path:"/videoplayer/:id",
-        element: <VideoPlayer />
-      }
+        path: "/videoplayer/:id",
+        element: <VideoPlayer />,
+      },
     ],
   },
 ]);
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <RouterProvider router={router}>
-    </RouterProvider>
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </StrictMode>
 );

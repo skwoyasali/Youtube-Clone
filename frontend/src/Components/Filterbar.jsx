@@ -22,10 +22,9 @@ const FilterBar = () => {
 
   return (
     <div
-      className={`
-        sticky top-14 z-10 bg-white
+      className={`top-14 z-10 bg-white
         transition-all duration-300
-        ${isOpen ? "ml-[240px]" : "ml-[72px]"}
+        ${isOpen ? "ml-[240px]" : "ml-[22px]"}
       `}
     >
       <div

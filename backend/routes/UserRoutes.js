@@ -1,10 +1,14 @@
 import express from 'express';
-import { registerUser, loginUser } from '../controllers/UserController.js';
-import auth from "../middleware/auth.js";
+import {
+  registerUser,
+  loginUser,
+  getUserProfile
+} from '../controllers/userController.js'; // import controllers
 
-const router = express.Router();
+function userRoutes(app) {
+    app.post('/api/register', registerUser); // register a new user
+    app.post('/api/login', loginUser);       // user login (sends JWT token)
+    app.get('/api/profile', getUserProfile); // get details of a user (requires JWT)
+}
 
-router.post('/register', registerUser);
-router.post('/login',loginUser);
-
-export default router;
+export default userRoutes; // export routes
