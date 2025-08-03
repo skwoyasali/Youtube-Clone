@@ -566,7 +566,7 @@ function VideoPlayer() {
         </h3>
 
         <div className="space-y-4">
-          {allvideos.sort(()=>0.5-Math.random())
+          {allvideos
           .slice(0, 10)
           .map((v) => (
             <Link
