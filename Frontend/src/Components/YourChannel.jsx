@@ -380,7 +380,7 @@ function YourChannel() {
         <div className="p-4">Posts content goes here...</div>
       )}
 
-      {/* Modals */}
+      {/* Edit Channel */}
       {showEditChannel && (
         <div className="fixed inset-0 pt-14 bg-black bg-opacity-50 flex items-center justify-center">
           <div className="bg-white p-6 rounded-lg w-96 text-gray-900">

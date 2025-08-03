@@ -39,7 +39,6 @@ function App() {
 
       {/* Sidebar + Main Content */}
       <div className='flex w-full max-w-screen overflow-hidden'>
-        {/* pt-14 = 56px (height of fixed header) */}
         <SideBar sidebarOpen={sidebarOpen} isMobile={isMobile} />
 
         <main className="w-full flex-1 px-2 sm:px-4 md:px-8">
