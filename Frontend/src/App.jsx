@@ -8,6 +8,8 @@ function App() {
   const [searchedVal, setSearchedVal] = useState("");
   const [searchActive, setSearchActive] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [fetchAgain, setFetchAgain] = useState(false); 
+
 
   useEffect(() => {
     const handleResize = () => {
@@ -32,6 +34,7 @@ function App() {
   sidebarOpen={sidebarOpen}
   setSidebarOpen={setSidebarOpen}
   searchedVal={searchedVal}
+  setFetchAgain={setFetchAgain}
   setSearchedVal={setSearchedVal}
   onSearch={() => setSearchActive(true)} // ✅ keep this
 />
@@ -44,6 +47,7 @@ function App() {
         <main className="w-full flex-1 px-2 sm:px-4 md:px-8">
           <Outlet
             context={{
+              fetchAgain,
               sidebarOpen,
               searchedVal,
               setSearchedVal,

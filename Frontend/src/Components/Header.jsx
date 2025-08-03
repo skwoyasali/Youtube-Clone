@@ -16,6 +16,7 @@ function Header({
   searchedVal,
   setSearchedVal,
   onSearch,
+  setFetchAgain
 }) {
   const { user } = useAuth();
   const [showModal, setShowModal] = useState(false);
@@ -106,6 +107,7 @@ function Header({
       );
     } finally {
       setFormLoading(false);
+      setFetchAgain(prev => !prev);
     }
   };
 
@@ -301,15 +303,9 @@ function Header({
             <div className="flex items-center gap-1 sm:gap-2">
               <Link
                 to="/login"
-                className="text-xs sm:text-sm font-medium text-gray-700 hover:underline"
+                className="text-xs sm:text-sm font-medium px-2 py-0.5 sm:px-6 sm:py-1.5 rounded-full border border-blue-600 text-blue-700 hover:bg-blue-300 transition"
               >
-                Sign In
-              </Link>
-              <Link
-                to="/register"
-                className="text-xs sm:text-sm font-medium px-2 py-0.5 sm:px-4 sm:py-1.5 rounded-full bg-blue-600 text-white hover:bg-blue-700 transition"
-              >
-                Sign Up
+                Sign in
               </Link>
             </div>
           )}

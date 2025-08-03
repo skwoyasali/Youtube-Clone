@@ -3,7 +3,7 @@ import axios from 'axios';
 import Video from './Video.jsx';
 import { useOutletContext, useLocation } from 'react-router-dom'; // ✅ useLocation added
 
-function VideoList({ sidebarOpen }) {
+function VideoList({sidebarOpen}) {
   const categories = [
     "All", "Programming","Movies", "Songs", "Design", "AI",
     "Gaming", "Vlogs", "Music", "Education"
@@ -17,7 +17,8 @@ function VideoList({ sidebarOpen }) {
     searchedVal,
     setSearchedVal,
     searchActive,
-    setSearchActive
+    setSearchActive,
+    fetchAgain = false
   } = useOutletContext();
 
   const location = useLocation(); // ✅ for detecting navigation
@@ -34,7 +35,7 @@ function VideoList({ sidebarOpen }) {
       }
     };
     fetchVideos();
-  }, []);
+  }, [fetchAgain]);
 
   // ✅ Filter videos on search
   useEffect(() => {
