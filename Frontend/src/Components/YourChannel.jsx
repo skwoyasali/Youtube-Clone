@@ -256,7 +256,7 @@ function YourChannel() {
   if (!channel) return null;
 
   return (
-    <div className="flex flex-col pt-16 min-h-screen bg-white text-gray-900">
+    <div className="flex flex-col pt-16 min-h-screen bg-white text-gray-900 pb-5">
       {/* Channel Header */}
       <div className="relative">
         <img
@@ -320,7 +320,7 @@ function YourChannel() {
 
       {/* Content Sections */}
       {activeTab === "Videos" && (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4 shadow-lg">
           {videos.map((video) => (
             <div key={video._id} className="relative">
               <Link to={`/video/${video._id}`}>
@@ -341,7 +341,7 @@ function YourChannel() {
               </div>
               <div className="absolute top-2 right-2">
                 <BsThreeDotsVertical
-                  className="cursor-pointer text-white"
+                  className="cursor-pointer font-bold text-2xl text-gray-700"
                   onClick={() =>
                     setMenuOpen(menuOpen === video._id ? null : video._id)
                   }
