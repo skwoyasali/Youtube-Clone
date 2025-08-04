@@ -81,15 +81,11 @@ npm install
 Create a `.env` file in the `/backend` directory:
 
 ```env
+PORT= 8000
 MONGO_URI=your_mongodb_connection_string
 JWT_SECRET=your_super_secret_key
 ```
 
-Seed the database with sample data:
-
-```bash
-node seed.js
-```
 
 Start the backend server:
 
